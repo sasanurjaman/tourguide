@@ -3,9 +3,15 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="index.html">
+            <a wire:navigate class="nav-link collapsed" href="{{ route('dashboard') }}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a wire:navigate class="nav-link collapsed" href="{{ route('package-list') }}">
+                <i class="bi bi-distribute-vertical"></i>
+                <span>Paket Trip</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
