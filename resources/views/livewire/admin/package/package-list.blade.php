@@ -6,7 +6,7 @@
             <h1>{{ $title }}</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li class="breadcrumb-item active">{{ $title }}</li>
                 </ol>
             </nav>
@@ -14,8 +14,20 @@
 
         <section class="section">
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Daftar Paket</h5>
+                @if (session()->has('success'))
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                <div class="card-body row">
+                    <div class="col-sm-6">
+                        <h5 class="card-title">Daftar Paket</h5>
+                    </div>
+                    <div class="col-sm-6 align-content-center justify-content-center">
+                        <a wire:navigate href="{{ route('package.create') }}" class="btn btn-primary float-end"><i
+                                class="bi bi-plus-circle"></i> Tambah Paket</a>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -23,7 +35,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Paket</th>
                                     <th scope="col">Deskripsi</th>
-                                    <th scope="col">Harga</th>
+                                    <th scope="col">Harga (Rp)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,7 +44,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $package->package_name }}</td>
                                     <td>{{ $package->package_description }}</td>
-                                    <td>{{ $package->package_price }}</td>
+                                    <td class="text-end">{{ number_format($package->package_price, 0, ',', '.') }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

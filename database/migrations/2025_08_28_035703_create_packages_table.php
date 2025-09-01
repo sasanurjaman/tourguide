@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('package_name');
             $table->text('package_description');
-            $table->decimal('package_price', 10, 2);
+            $table->integer('package_price');
             $table->string('package_image')->nullable();
             $table->softDeletes();
             $table->timestamps();

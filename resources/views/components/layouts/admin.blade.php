@@ -32,7 +32,10 @@
     <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
+    @livewireStyles
     <link href="/assets/css/style.css" rel="stylesheet">
+
+    @stack('css')
 
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -83,8 +86,10 @@
     <script src="/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
+    @livewireScripts
     <script src="/assets/js/main.js"></script>
 
+    @stack('script')
 </body>
 
 </html>
