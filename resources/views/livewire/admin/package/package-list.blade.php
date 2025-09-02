@@ -28,6 +28,17 @@
                         <a wire:navigate href="{{ route('package.create') }}" class="btn btn-primary float-end"><i
                                 class="bi bi-plus-circle"></i> Tambah Paket</a>
                     </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <input type="text" wire:model.live.debounce.100ms="search" class="form-control w-50"
+                            placeholder="Cari paket...">
+
+                        <select wire:model.live="perpage" class="form-select w-auto">
+                            <option value="5">5 / halaman</option>
+                            <option value="10">10 / halaman</option>
+                            <option value="20">20 / halaman</option>
+                            <option value="50">50 / halaman</option>
+                        </select>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -59,6 +70,8 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        {{ $packages->links() }}
                     </div>
                 </div>
             </div>
