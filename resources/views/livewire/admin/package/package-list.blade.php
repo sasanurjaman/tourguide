@@ -49,7 +49,11 @@
                                     <td>
                                         <a wire:navigate href="{{ route('package.edit', $package->id) }}"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                            class="badge bg-warning"><i class="bi bi-pencil-square"></i></a>
+                                            class="badge bg-warning"><i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <button wire:click="delete({{ $package->id }})"
+                                            wire:confirm="Anda yakin ingin menghapus paket {{ $package->package_name }}?"
+                                            class="badge bg-danger border-0"><i class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
