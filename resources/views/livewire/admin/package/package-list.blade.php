@@ -36,6 +36,7 @@
                                     <th scope="col">Nama Paket</th>
                                     <th scope="col">Deskripsi</th>
                                     <th scope="col">Harga (Rp)</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,6 +46,11 @@
                                     <td>{{ $package->package_name }}</td>
                                     <td>{{ $package->package_description }}</td>
                                     <td class="text-end">{{ number_format($package->package_price, 0, ',', '.') }}</td>
+                                    <td>
+                                        <a wire:navigate href="{{ route('package.edit', $package->id) }}"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                            class="badge bg-warning"><i class="bi bi-pencil-square"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Package;
 
+use App\Http\Requests\PackageRequest;
 use App\Models\Package;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -20,22 +21,13 @@ class PackageCreate extends Component
     public $package_name, $package_description, $package_price;
     public $package_image;
 
-    public $rules = [
-        'package_name' => 'required|string|max:255|unique:packages',
-        'package_description' => 'required|string',
-        'package_price' => 'required|numeric|min:0',
-        'package_image' => 'nullable|image|max:2048', // Maksimal 2MB
-    ];
-
     public function store()
     {
-        $data = $this->validate();
+        $data = $this->validate((new PackageRequest())->rules());
 
         if ($this->package_image) {
             $data['package_image'] = $this->package_image->store('packages', 'public');
         }
-
-        // dd($data);
 
         Package::create($data);
 
