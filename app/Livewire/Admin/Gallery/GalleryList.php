@@ -9,10 +9,13 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class GalleryList extends Component
 {
     use WithFileUploads;
+    use WithPagination;
+
     #[Layout('components.layouts.admin')]
     #[Title('Galeri')]
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Admin\Article\ArticleList;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Gallery\GalleryCreate;
 use App\Livewire\Admin\Gallery\GalleryList;
@@ -22,4 +23,5 @@ Route::prefix('auth')->middleware(['auth'])->group(function () {
     Route::get('/package/edit/{id}', PackageEdit::class)->name('package.edit');
     Route::get('/gallery', GalleryList::class)->name('gallery.list');
     Route::get('/gallery/create', GalleryCreate::class)->name('gallery.create');
+    Route::get('/article', ArticleList::class)->name('article.list');
 });
