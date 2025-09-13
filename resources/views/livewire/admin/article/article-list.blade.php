@@ -29,17 +29,17 @@
                         <a wire:navigate href="{{ route('package.create') }}" class="btn btn-primary float-end"><i
                                 class="bi bi-plus-circle"></i> Tambah Paket</a>
                     </div> --}}
-                    {{-- <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between mb-3">
                         <input type="text" wire:model.live.debounce.100ms="search" class="form-control w-50"
                             placeholder="Cari paket...">
 
-                        <select wire:model.live="perpage" class="form-select w-auto">
+                        <select wire:model.live.debounce.100ms="perpage" class="form-select w-auto">
                             <option value="5">5 / halaman</option>
                             <option value="10">10 / halaman</option>
                             <option value="20">20 / halaman</option>
                             <option value="50">50 / halaman</option>
                         </select>
-                    </div> --}}
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -56,15 +56,15 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $article->article_title }}</td>
                                     <td>{{ $article->article_description }}</td>
-                                    {{-- <td>
-                                        <a wire:navigate href="{{ route('article.edit', $article->id) }}"
+                                    <td>
+                                        {{-- <a wire:navigate href="{{ route('article.edit', $article->id) }}"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                             class="badge bg-warning"><i class="bi bi-pencil-square"></i>
-                                        </a>
+                                        </a> --}}
                                         <button wire:click="delete({{ $article->id }})"
-                                            wire:confirm="Anda yakin ingin menghapus paket {{ $article->article_name }}?"
+                                            wire:confirm="Anda yakin ingin menghapus paket {{ $article->article_title }}?"
                                             class="badge bg-danger border-0"><i class="bi bi-trash"></i></button>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
