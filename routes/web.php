@@ -1,6 +1,8 @@
 <?php
 
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\Gallery\GalleryCreate;
+use App\Livewire\Admin\Gallery\GalleryList;
 use App\Livewire\Admin\Package\PackageCreate;
 use App\Livewire\Admin\Package\PackageEdit;
 use App\Livewire\Admin\Package\PackageList;
@@ -13,11 +15,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::prefix('auth')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/package', PackageList::class)->name('package-list');
     Route::get('/package/create', PackageCreate::class)->name('package.create');
     Route::get('/package/edit/{id}', PackageEdit::class)->name('package.edit');
+    Route::get('/gallery', GalleryList::class)->name('gallery.list');
+    Route::get('/gallery/create', GalleryCreate::class)->name('gallery.create');
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
