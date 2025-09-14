@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class ArticleRequest extends FormRequest
 {
@@ -19,11 +21,23 @@ class ArticleRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
+    public ?int $id = null;
     public function rules(): array
     {
         return [
-            'article_title' => 'required|string|max:255|unique:articles,article_title',
-            'article_slug' => 'required|string|max:255|unique:articles,article_slug',
+            'article_title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('articles', 'article_title')->ignore($this->id),
+            ],
+            'article_slug' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('articles', 'article_slug')->ignore($this->id)
+            ],
             'article_description' => 'required|string',
             'article_image' => 'nullable|image|max:2048', // Max 2MB
         ];

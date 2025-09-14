@@ -64,10 +64,10 @@
                                     </td>
                                     <td>{{ $article->article_title }}</td>
                                     <td>
-                                        {{-- <a wire:navigate href="{{ route('article.edit', $article->id) }}"
+                                        <a wire:navigate href="{{ route('article.edit', $article->id) }}"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                             class="badge bg-warning"><i class="bi bi-pencil-square"></i>
-                                        </a> --}}
+                                        </a>
                                         <button wire:click="delete({{ $article->id }})"
                                             wire:confirm="Anda yakin ingin menghapus paket {{ $article->article_title }}?"
                                             class="badge bg-danger border-0"><i class="bi bi-trash"></i></button>
