@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Admin\Article\ArticleCreate;
 use App\Livewire\Admin\Article\ArticleList;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Gallery\GalleryCreate;
@@ -24,4 +25,5 @@ Route::prefix('auth')->middleware(['auth'])->group(function () {
     Route::get('/gallery', GalleryList::class)->name('gallery.list');
     Route::get('/gallery/create', GalleryCreate::class)->name('gallery.create');
     Route::get('/article', ArticleList::class)->name('article.list');
+    Route::get('/article/create', ArticleCreate::class)->name('article.create');
 });

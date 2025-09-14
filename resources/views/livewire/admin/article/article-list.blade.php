@@ -25,13 +25,13 @@
                     <div class="col-sm-6">
                         <h5 class="card-title">{{ $title }}</h5>
                     </div>
-                    {{-- <div class="col-sm-6 align-content-center justify-content-center">
-                        <a wire:navigate href="{{ route('package.create') }}" class="btn btn-primary float-end"><i
-                                class="bi bi-plus-circle"></i> Tambah Paket</a>
-                    </div> --}}
+                    <div class="col-sm-6 align-content-center justify-content-center">
+                        <a wire:navigate href="{{ route('article.create') }}" class="btn btn-primary float-end"><i
+                                class="bi bi-plus-circle"></i> Tambah Artikel</a>
+                    </div>
                     <div class="d-flex justify-content-between mb-3">
                         <input type="text" wire:model.live.debounce.100ms="search" class="form-control w-50"
-                            placeholder="Cari paket...">
+                            placeholder="Cari artikel...">
 
                         <select wire:model.live.debounce.100ms="perpage" class="form-select w-auto">
                             <option value="5">5 / halaman</option>
@@ -45,8 +45,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">judul</th>
-                                    <th scope="col">Deskripsi</th>
+                                    <th scope="col">Gambar</th>
+                                    <th scope="col">Judul</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -54,8 +54,15 @@
                                 @foreach ($articles as $article)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>
+                                        @if ($article->article_image)
+                                        <img height="50px" src="{{ asset('storage/' . $article->article_image) }}"
+                                            alt="">
+                                        @else
+                                        <img height="50px" src="{{ asset('assets/img/no-image.jpeg') }}" alt="">
+                                        @endif
+                                    </td>
                                     <td>{{ $article->article_title }}</td>
-                                    <td>{{ $article->article_description }}</td>
                                     <td>
                                         {{-- <a wire:navigate href="{{ route('article.edit', $article->id) }}"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
