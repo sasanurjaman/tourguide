@@ -74,6 +74,15 @@
                                 </div>
                                 @enderror
                             </div>
+                            {{-- Progress Bar Upload --}}
+                            <div class="mt-3" wire:loading wire:target="package_image">
+                                <div class="progress" style="height: 25px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                                        role="progressbar" style="width: 100%">
+                                        Mengunggah gambar...
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mt-3">
                                 @if ($package_image)
                                 <img src="{{ $package_image ? $package_image->temporaryUrl() : '' }}" alt=""

@@ -48,6 +48,8 @@ class ArticleEdit extends Component
                 }
             }
             $data['article_image'] = $this->article_image->store('article', 'public');
+        } else {
+            $data['article_image'] = $this->article_imageOld;
         }
 
         if ($this->article_image instanceof TemporaryUploadedFile) {

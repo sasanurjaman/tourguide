@@ -49,6 +49,8 @@ class PackageEdit extends Component
                 }
             }
             $data['package_image'] = $this->package_image->store('packages', 'public');
+        } else {
+            $data['package_image'] = $this->package_imageold;
         }
 
         if ($this->package_image instanceof TemporaryUploadedFile) {

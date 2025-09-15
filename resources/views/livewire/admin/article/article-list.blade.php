@@ -26,7 +26,7 @@
                         <h5 class="card-title">{{ $title }}</h5>
                     </div>
                     <div class="col-sm-6 align-content-center justify-content-center">
-                        <a wire:navigate href="{{ route('article.create') }}" class="btn btn-primary float-end"><i
+                        <a href="{{ route('article.create') }}" class="btn btn-primary float-end"><i
                                 class="bi bi-plus-circle"></i> Tambah Artikel</a>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
@@ -64,9 +64,9 @@
                                     </td>
                                     <td>{{ $article->article_title }}</td>
                                     <td>
-                                        <a wire:navigate href="{{ route('article.edit', $article->id) }}"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                            class="badge bg-warning"><i class="bi bi-pencil-square"></i>
+                                        <a href="{{ route('article.edit', $article->id) }}" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit" class="badge bg-warning"><i
+                                                class="bi bi-pencil-square"></i>
                                         </a>
                                         <button wire:click="delete({{ $article->id }})"
                                             wire:confirm="Anda yakin ingin menghapus paket {{ $article->article_title }}?"
